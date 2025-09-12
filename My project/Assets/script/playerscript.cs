@@ -18,6 +18,7 @@ public class playerscript : MonoBehaviour
     public GameObject playergo;//角色对象
     public LayerMask groundlayer;//地面图层
     private bool isJumping = false;//是否正在跳跃中
+    public float checkline = 1.0f;
 
     void Start()
     {
@@ -108,7 +109,7 @@ public class playerscript : MonoBehaviour
     public void checkisground()
     {
         Vector2 startpos = playergo.transform.position;
-        Vector2 endpos = playergo.transform.position + Vector3.down * 1.2f;
+        Vector2 endpos = playergo.transform.position + Vector3.down * checkline;
         Debug.DrawLine(startpos, endpos, Color.red, 1f);//调试射线
 
         RaycastHit2D hit = Physics2D.Linecast(startpos, endpos, groundlayer);
