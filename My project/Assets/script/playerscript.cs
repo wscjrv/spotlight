@@ -110,7 +110,7 @@ public class playerscript : MonoBehaviour
     {
         Vector2 startpos = playergo.transform.position;
         Vector2 endpos = playergo.transform.position + Vector3.down * checkline;
-        Debug.DrawLine(startpos, endpos, Color.red, 1f);//调试射线
+        //Debug.DrawLine(startpos, endpos, Color.red, 1f);//调试射线
 
         RaycastHit2D hit = Physics2D.Linecast(startpos, endpos, groundlayer);
         isground = hit.collider != null;

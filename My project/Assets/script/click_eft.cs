@@ -1,67 +1,57 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class click_eft : MonoBehaviour
 {
-    [Header("ÌØĞ§ÉèÖÃ")]
-    public Animator effectAnimator; // ÌØĞ§¶¯»­¿ØÖÆÆ÷
-    public GameObject model; // ClickµÄÄ£ĞÍ£¨¿ÉÑ¡£©
+    [Header("ç‰¹æ•ˆè®¾ç½®")]
+    public Animator effectAnimator; // ç‚¹å‡»ç‰¹æ•ˆåŠ¨ç”»å™¨
+    public GameObject model; // clickçš„æ˜¾ç¤ºæ¨¡å‹
 
-    private click_eft_base manager;
-    private Collider2D clickCollider; // Åö×²Ìå
+    private ClickSequenceManager manager; // æ”¹ä¸ºæ–°çš„åºåˆ—ç®¡ç†å™¨
+    private Collider2D clickCollider; // ç¢°æ’æ£€æµ‹ç»„ä»¶
 
     private void Awake()
     {
-        // »ñÈ¡Åö×²Ìå×é¼ş
+        // è·å–ç¢°æ’ç»„ä»¶å¹¶è®¾ç½®ä¸ºè§¦å‘å™¨
         clickCollider = GetComponent<Collider2D>();
         if (clickCollider != null)
         {
-            clickCollider.isTrigger = true; // ÉèÖÃÎª´¥·¢Æ÷
+            clickCollider.isTrigger = true;
         }
 
-        // Èç¹ûÎ´Ö¸¶¨Ä£ĞÍ£¬Ä¬ÈÏÊ¹ÓÃ×ÔÉí
+        // è‹¥æœªæŒ‡å®šæ¨¡å‹ï¼Œé»˜è®¤ä½¿ç”¨è‡ªèº«
         if (model == null)
         {
             model = gameObject;
         }
     }
 
-    // ÉèÖÃ¹ÜÀíÆ÷ÒıÓÃ
-    public void SetManager(click_eft_base manager)
+    // è®¾ç½®ç®¡ç†å™¨ï¼ˆä¿®æ”¹å‚æ•°ç±»å‹ä¸ºæ–°ç®¡ç†å™¨ï¼‰
+    public void SetManager(ClickSequenceManager manager)
     {
         this.manager = manager;
     }
 
-    // ÏÔÊ¾Click
+    // æ˜¾ç¤ºå½“å‰click
     public void Show()
     {
         if (model != null)
-        {
             model.SetActive(true);
-        }
-
         if (clickCollider != null)
-        {
             clickCollider.enabled = true;
-        }
     }
 
-    // Òş²ØClick
+    // éšè—å½“å‰click
     public void Hide()
     {
         if (model != null)
-        {
             model.SetActive(false);
-        }
-
         if (clickCollider != null)
-        {
             clickCollider.enabled = false;
-        }
     }
 
-    // ²¥·ÅÌØĞ§
+    // æ’­æ”¾ç‚¹å‡»ç‰¹æ•ˆ
     public void PlayEffect()
     {
         if (effectAnimator != null)
@@ -70,21 +60,18 @@ public class click_eft : MonoBehaviour
         }
     }
 
-    // ¼ì²â½ÇÉ«Åö×²
+    // ç©å®¶è§¦ç¢°æ—¶åˆ‡æ¢åºåˆ—
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // ¼ì²éÊÇ·ñÓë½ÇÉ«Åö×²
         if (manager != null && other.gameObject == manager.player)
         {
-            // Í¨Öª¹ÜÀíÆ÷ÇĞ»»µ½ÏÂÒ»¸öClick
-            manager.NextClick();
+            manager.NextSequence(); // è°ƒç”¨æ–°ç®¡ç†å™¨çš„åˆ‡æ¢æ–¹æ³•
         }
     }
 
-    // ¿Õ¸ñ¼ü´¥·¢ÌØĞ§
+    // ç©ºæ ¼é”®æ’­æ”¾ç‰¹æ•ˆï¼ˆä»…å¯¹å¯è§çŠ¶æ€æœ‰æ•ˆï¼‰
     private void Update()
     {
-        // Ö»ÓĞµ±Click¿É¼ûÊ±²ÅÏìÓ¦¿Õ¸ñ¼ü
         if (model != null && model.activeSelf && Input.GetKeyDown(KeyCode.Space))
         {
             PlayEffect();
