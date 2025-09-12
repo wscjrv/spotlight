@@ -1,0 +1,114 @@
+{
+    "version": 1,
+    "name": "playerinput",
+    "maps": [
+        {
+            "name": "player",
+            "id": "73088cff-2ed9-402e-b8c7-a7b1d9f7be03",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "587e5f94-65b3-4264-bb28-e29dd9ccdb82",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "50e4b018-2f89-4cd2-85ed-e6baa2938b5a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "OpenMenu",
+                    "type": "Button",
+                    "id": "c9c4da20-c632-4f0d-aa74-b3766a72434d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "38f5e6ec-89e7-4c47-bdba-f28ecedbca91",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "62945761-805b-49a8-ae10-3324ebe4ab76",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bfde7997-1320-4c98-9b96-c9ba07306ce7",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c628b44d-5b9a-46c4-9086-6a2ce6e71a3a",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Interact",
+            "id": "cfdb1480-950c-4072-888c-f9a2040dc8d8",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "d6d35388-60f4-4e2d-9173-03647eec1308",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "12c502d0-a5ee-4b09-b4fc-f3a5d74db12c",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
