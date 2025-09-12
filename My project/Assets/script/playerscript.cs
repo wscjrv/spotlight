@@ -17,13 +17,13 @@ public class playerscript : MonoBehaviour
     public bool isground = true;//是否在地面
     public GameObject playergo;//角色对象
     public LayerMask groundlayer;//地面图层
-    private bool isJumping = false;//是否正在跳跃中
+    public bool isJumping = false;//是否正在跳跃中
     public float checkline = 1.0f;
 
     void Start()
     {
         Application.targetFrameRate = 60;//设置帧率
-        Debug.Log("hello,game!");
+        //Debug.Log("hello,game!");
     }
 
     void Update()
