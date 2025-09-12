@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class playerscript : MonoBehaviour
 {
+    public Animator maskanimation;
     [Header("playermove")]
     public Rigidbody2D rb;//移动组件
     private float xinput;//水平输入
@@ -23,6 +24,7 @@ public class playerscript : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 60;//设置帧率
+        maskanimation.SetTrigger("ifmaskin");
         //Debug.Log("hello,game!");
     }
 

@@ -32,5 +32,6 @@ public class PlatformController_Type1 : MonoBehaviour
     public void TriggerDrop()
     {
         hasDropped = true; // 一旦触发，永久保持下降状态
+        Debug.Log("123");
     }
 }

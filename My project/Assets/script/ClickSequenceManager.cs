@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ClickSequenceManager : MonoBehaviour
 {
+    public Animator maskanimation;
     [Header("序列配置")]
     [Tooltip("click对象列表，需与clickse列表数量一致且顺序对应")]
     public List<click_eft> clickList = new List<click_eft>();
@@ -58,10 +59,12 @@ public class ClickSequenceManager : MonoBehaviour
     // 显示当前索引的click和clickse
     private void ShowCurrentSequence()
     {
+
         if (IsIndexValid(currentSequenceIndex))
         {
             clickList[currentSequenceIndex].Show();
             clickseList[currentSequenceIndex].Show();
+            clickList[currentSequenceIndex].PlayEffect();
         }
     }
 
@@ -101,6 +104,7 @@ public class ClickSequenceManager : MonoBehaviour
     private void OnAllSequencesCompleted()
     {
         Debug.Log("所有click/clickse序列已完成！");
+        maskanimation.SetTrigger("ifmaskout");
         // TODO: 此处添加所有序列完成后的逻辑
     }
 }
