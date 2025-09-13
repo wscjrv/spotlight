@@ -69,10 +69,10 @@ public class click_eft : MonoBehaviour
         }
     }
 
-    // 空格键播放特效（仅对可见状态有效）
+    // 键播放特效（仅对可见状态有效）
     private void Update()
     {
-        if (model != null && model.activeSelf && Input.GetKeyDown(KeyCode.Space))
+        if (model != null && model.activeSelf && Input.GetKeyDown(KeyCode.S))
         {
             PlayEffect();
         }
