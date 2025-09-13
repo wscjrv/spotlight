@@ -1,78 +1,79 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class click_eft : MonoBehaviour
 {
     [Header("特效设置")]
     public Animator effectAnimator; // 点击特效动画器
-    public GameObject model; // click的显示模型
+    private Collider2D clickCollider; // 碰撞组件
 
-    private ClickSequenceManager manager; // 改为新的序列管理器
-    private Collider2D clickCollider; // 碰撞检测组件
+    private ClickSequenceManager manager; // 管理器引用
+    private int sequenceIndex; // 组索引
 
     private void Awake()
     {
-        // 获取碰撞组件并设置为触发器
+        // 初始化碰撞组件
         clickCollider = GetComponent<Collider2D>();
         if (clickCollider != null)
         {
             clickCollider.isTrigger = true;
         }
-
-        // 若未指定模型，默认使用自身
-        if (model == null)
-        {
-            model = gameObject;
-        }
     }
 
-    // 设置管理器（修改参数类型为新管理器）
+    /// <summary>设置管理器引用</summary>
     public void SetManager(ClickSequenceManager manager)
     {
         this.manager = manager;
     }
 
-    // 显示当前click
+    /// <summary>设置组索引</summary>
+    public void SetSequenceIndex(int index)
+    {
+        sequenceIndex = index;
+    }
+
+    /// <summary>显示元素（启用碰撞）</summary>
     public void Show()
     {
-        if (model != null)
-            model.SetActive(true);
         if (clickCollider != null)
             clickCollider.enabled = true;
     }
 
-    // 隐藏当前click
+    /// <summary>隐藏元素（禁用碰撞）</summary>
     public void Hide()
     {
-        if (model != null)
-            model.SetActive(false);
         if (clickCollider != null)
             clickCollider.enabled = false;
     }
 
-    // 播放点击特效
+    /// <summary>播放特效</summary>
     public void PlayEffect()
     {
-        if (effectAnimator != null)
-        {
-            effectAnimator.SetTrigger("click");
-        }
+        effectAnimator?.SetTrigger("click");
     }
 
-    // 玩家触碰时切换序列
+    /// <summary>判断是否可见（碰撞体启用即为可见）</summary>
+    public bool IsVisible => clickCollider != null && clickCollider.enabled;
+
+    /// <summary>玩家触碰触发</summary>
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (manager != null && other.gameObject == manager.player)
+        if (manager == null || other.gameObject != manager.player)
+            return;
+
+        if (manager.displayMode == DisplayMode.Sequential)
         {
-            manager.NextSequence(); // 调用新管理器的切换方法
+            manager.NextSequence();
+        }
+        else
+        {
+            manager.OnElementTriggered(sequenceIndex);
         }
     }
 
-    // 键播放特效（仅对可见状态有效）
+    /// <summary>S键播放特效（仅可见时）</summary>
     private void Update()
     {
-        if (model != null && model.activeSelf && Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) && IsVisible)
         {
             PlayEffect();
         }

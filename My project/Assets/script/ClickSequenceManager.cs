@@ -1,86 +1,93 @@
 using System.Collections.Generic;
+using UnityEditor.Experimental.RestService;
 using UnityEngine;
+
+public enum DisplayMode
+{
+    Sequential, // 顺序显示
+    AllAtOnce   // 同时显示
+}
 
 public class ClickSequenceManager : MonoBehaviour
 {
     public Animator maskanimation;
-    [Header("序列配置")]
-    [Tooltip("click对象列表，需与clickse列表数量一致且顺序对应")]
+    [Header("显示设置")]
+    public DisplayMode displayMode = DisplayMode.Sequential;
     public List<click_eft> clickList = new List<click_eft>();
-
-    [Tooltip("clickse对象列表，需与click列表数量一致且顺序对应")]
     public List<clickse_eft> clickseList = new List<clickse_eft>();
+    public GameObject player;
 
-    public GameObject player; // 玩家角色
-
-    private int currentSequenceIndex = 0; // 当前激活的序列索引
+    // 顺序模式变量
+    private int currentSequenceIndex = 0;
+    // 同时模式变量
+    private int completedCount = 0;
+    private int totalCount = 0;
 
     private void Start()
     {
-        if (InitializeSequence())
+        InitializeAllElements();
+
+        if (displayMode == DisplayMode.Sequential)
         {
             ShowCurrentSequence();
         }
+        else
+        {
+            ShowAllElements();
+        }
     }
 
-    // 初始化序列（检查合法性并隐藏所有对象）
-    private bool InitializeSequence()
+    /// <summary>初始化元素（仅基础设置，无校验）</summary>
+    private void InitializeAllElements()
     {
-        // 检查两组数量是否一致
-        if (clickList.Count != clickseList.Count)
+        totalCount = clickList.Count;
+
+        // 初始化click元素
+        for (int i = 0; i < totalCount; i++)
         {
-            Debug.LogError("Error: click与clickse数量不匹配！");
-            return false;
+            var click = clickList[i];
+            if (click != null)
+            {
+                click.SetManager(this);
+                click.SetSequenceIndex(i);
+                click.Hide();
+            }
         }
 
-        // 检查列表是否为空
-        if (clickList.Count == 0)
-        {
-            Debug.LogWarning("Warning: 未添加任何click或clickse对象！");
-            return false;
-        }
-
-        // 初始化所有click（设置管理器并隐藏）
-        foreach (var click in clickList)
-        {
-            click.SetManager(this);
-            click.Hide();
-        }
-
-        // 隐藏所有clickse
+        // 初始化clickse元素
         foreach (var clickse in clickseList)
         {
-            clickse.Hide();
+            clickse?.Hide();
         }
 
-        return true;
+        currentSequenceIndex = 0;
+        completedCount = 0;
     }
 
-    // 显示当前索引的click和clickse
+    #region 顺序模式
     private void ShowCurrentSequence()
     {
-
         if (IsIndexValid(currentSequenceIndex))
         {
-            clickList[currentSequenceIndex].Show();
-            clickseList[currentSequenceIndex].Show();
-            clickList[currentSequenceIndex].PlayEffect();
+            clickList[currentSequenceIndex]?.Show();
+            clickseList[currentSequenceIndex]?.Show();
+            clickList[currentSequenceIndex]?.PlayEffect();
         }
     }
 
-    // 隐藏当前索引的click和clickse
     private void HideCurrentSequence()
     {
         if (IsIndexValid(currentSequenceIndex))
         {
-            clickList[currentSequenceIndex].Hide();
-            clickseList[currentSequenceIndex].Hide();
+            clickList[currentSequenceIndex]?.Hide();
+            clickseList[currentSequenceIndex]?.Hide();
         }
     }
 
-    // 切换到下一组序列
     public void NextSequence()
     {
+        if (displayMode != DisplayMode.Sequential) return;
+
         HideCurrentSequence();
         currentSequenceIndex++;
 
@@ -90,21 +97,46 @@ public class ClickSequenceManager : MonoBehaviour
         }
         else
         {
-            OnAllSequencesCompleted();
+            OnAllCompleted();
+        }
+    }
+    #endregion
+
+    #region 同时模式
+    private void ShowAllElements()
+    {
+        for (int i = 0; i < totalCount; i++)
+        {
+            clickList[i]?.Show();
+            clickseList[i]?.Show();
+            clickList[i]?.PlayEffect();
         }
     }
 
-    // 检查索引是否合法
+    public void OnElementTriggered(int index)
+    {
+        if (displayMode != DisplayMode.AllAtOnce || !IsIndexValid(index)) return;
+
+        clickList[index]?.Hide();
+        clickseList[index]?.Hide();
+        clickList[index]?.PlayEffect();
+
+        completedCount++;
+        if (completedCount >= totalCount)
+        {
+            OnAllCompleted();
+        }
+    }
+    #endregion
+
     private bool IsIndexValid(int index)
     {
-        return index >= 0 && index < clickList.Count;
+        return index >= 0 && index < totalCount;
     }
 
-    // 所有序列完成后的回调（留白扩展）
-    private void OnAllSequencesCompleted()
+    private void OnAllCompleted()
     {
-        Debug.Log("所有click/clickse序列已完成！");
-        maskanimation.SetTrigger("ifmaskout");
-        // TODO: 此处添加所有序列完成后的逻辑
+        Debug.Log("所有元素处理完成");
+        maskanimation?.SetTrigger("ifmaskout");
     }
 }

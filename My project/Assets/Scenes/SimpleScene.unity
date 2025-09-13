@@ -1070,6 +1070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maskanimation: {fileID: 1901343805}
+  displayMode: 1
   clickList:
   - {fileID: 324864099}
   - {fileID: 1707389609}
