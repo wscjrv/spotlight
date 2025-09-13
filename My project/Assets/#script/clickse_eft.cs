@@ -8,9 +8,7 @@ public class clickse_eft : MonoBehaviour
     private void Awake()
     {
         if (model == null)
-        {
             model = gameObject;
-        }
     }
 
     /// <summary>显示元素</summary>

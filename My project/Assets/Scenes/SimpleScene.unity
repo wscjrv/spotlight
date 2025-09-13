@@ -1070,8 +1070,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2bf968c6f563684bad6e3cc2d164479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maskanimation: {fileID: 1901343805}
-  displayMode: 0
+  displayMode: 1
   clickList:
   - {fileID: 324864099}
   - {fileID: 1707389609}
@@ -1081,7 +1080,10 @@ MonoBehaviour:
   - {fileID: 1465301987}
   - {fileID: 1753420843}
   player: {fileID: 1162998736}
-  completionAudio: {fileID: 0}
+  maskanimation: {fileID: 1901343805}
+  completionAudio: {fileID: 8300000, guid: 40728e1cbc85a7149aa20d8fa8baab08, type: 3}
+  playInitAudio: 1
+  initAudioType: 1
 --- !u!4 &638583888
 Transform:
   m_ObjectHideFlags: 0
@@ -1112,6 +1114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8a22564e3ef2514295361ffaf43b140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timekey: 0.5
+  timetouch: 1
 --- !u!1 &866932286
 GameObject:
   m_ObjectHideFlags: 0
@@ -1504,6 +1508,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: animation2
       objectReference: {fileID: 0}
+    - target: {fileID: 8106189462433829128, guid: 4b98e25d015ca8a42a09f84893e158f8, type: 3}
+      propertyPath: audiokey
+      value: 
+      objectReference: {fileID: 8300000, guid: 082243d2413c204448e9f24e4f0dc5c0, type: 3}
+    - target: {fileID: 8106189462433829128, guid: 4b98e25d015ca8a42a09f84893e158f8, type: 3}
+      propertyPath: audiotouch
+      value: 
+      objectReference: {fileID: 8300000, guid: abece9cf05ce47c4c9575793b60eb514, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1719,6 +1731,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: animation1
       objectReference: {fileID: 0}
+    - target: {fileID: 8106189462433829128, guid: 4b98e25d015ca8a42a09f84893e158f8, type: 3}
+      propertyPath: audiokey
+      value: 
+      objectReference: {fileID: 8300000, guid: be2dc37c57378c544b3b7fe9845a1451, type: 3}
+    - target: {fileID: 8106189462433829128, guid: 4b98e25d015ca8a42a09f84893e158f8, type: 3}
+      propertyPath: audiotouch
+      value: 
+      objectReference: {fileID: 8300000, guid: 41d72b263340f1f46ae7ec7617fc64d1, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2199,9 +2219,13 @@ PrefabInstance:
       value: Music0
       objectReference: {fileID: 0}
     - target: {fileID: 8106189462433829128, guid: 4b98e25d015ca8a42a09f84893e158f8, type: 3}
+      propertyPath: audiokey
+      value: 
+      objectReference: {fileID: 8300000, guid: 54fb634c8285a2046aee72045ead87f0, type: 3}
+    - target: {fileID: 8106189462433829128, guid: 4b98e25d015ca8a42a09f84893e158f8, type: 3}
       propertyPath: audiotouch
       value: 
-      objectReference: {fileID: 8300000, guid: c82c32cd3eb9ff14ca45c8afc4e4dd2e, type: 3}
+      objectReference: {fileID: 8300000, guid: 54fb634c8285a2046aee72045ead87f0, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

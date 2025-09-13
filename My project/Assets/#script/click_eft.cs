@@ -3,108 +3,89 @@
 public class click_eft : MonoBehaviour
 {
     [Header("特效设置")]
-    public Animator effectAnimator; // 点击特效动画器
-    private Collider2D clickCollider; // 碰撞组件
-
+    public Animator effectAnimator;
     [Header("音频设置")]
-    public AudioClip audiotouch; // 玩家触碰时播放的音频（优先级高）
-    public AudioClip audiokey; // 按键触发时播放的音频（优先级低）
+    public AudioClip audiokey;   // 按键音频（当前音频组）
+    public AudioClip audiotouch; // 触碰音频（当前音频组）
 
-    private ClickSequenceManager manager; // 管理器引用
-    private int sequenceIndex; // 组索引
+    private Collider2D clickCollider;
+    private ClickSequenceManager manager;
+    private int sequenceIndex; // 自身索引（仅用于隐藏）
 
     private void Awake()
     {
-        // 初始化碰撞组件
         clickCollider = GetComponent<Collider2D>();
         if (clickCollider != null)
-        {
             clickCollider.isTrigger = true;
-        }
     }
 
-    /// <summary>设置管理器引用</summary>
     public void SetManager(ClickSequenceManager manager)
     {
         this.manager = manager;
     }
 
-    /// <summary>设置组索引</summary>
     public void SetSequenceIndex(int index)
     {
         sequenceIndex = index;
     }
 
-    /// <summary>显示元素（启用碰撞）</summary>
     public void Show()
     {
         if (clickCollider != null)
             clickCollider.enabled = true;
     }
 
-    /// <summary>隐藏元素（禁用碰撞）</summary>
     public void Hide()
     {
         if (clickCollider != null)
             clickCollider.enabled = false;
     }
 
-    /// <summary>播放特效动画</summary>
-    private void PlayEffect()
+    public void PlayEffect()
     {
         effectAnimator?.SetTrigger("click");
     }
 
-    /// <summary>通过玩家触碰播放特效和音频1（优先级）</summary>
-    public void PlayByTouch()
-    {
-        PlayEffect();
-        if (audiotouch != null)
-        {
-            AudioQueueManager.Instance.EnqueueAudio(audiotouch, this, true);
-        }
-    }
-
-    /// <summary>通过按键播放特效和音频2（普通优先级）</summary>
-    public void PlayByKey()
-    {
-        PlayEffect();
-        // 音频2为null时使用音频1
-        AudioClip targetAudio = audiokey ?? audiotouch;
-        if (targetAudio != null)
-        {
-            AudioQueueManager.Instance.EnqueueAudio(targetAudio, this, false);
-        }
-    }
-
-    /// <summary>判断是否可见（碰撞体启用即为可见）</summary>
     public bool IsVisible => clickCollider != null && clickCollider.enabled;
 
-    /// <summary>玩家触碰触发</summary>
+    /// <summary>触碰触发：通知管理器处理（使用当前音频组）</summary>
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (manager == null || other.gameObject != manager.player)
             return;
 
-        PlayByTouch(); // 播放音频1（优先级）
+        PlayEffect(); // 播放自身动画（与音频组无关）
 
-        // 执行序列切换逻辑
         if (manager.displayMode == DisplayMode.Sequential)
         {
+            // 顺序模式：使用自身音频
+            AudioPlayer.Instance.PlayAudio(this, TriggerType.Touch);
             manager.NextSequence();
         }
         else
         {
+            // 同时模式：由管理器决定播放哪个音频组
             manager.OnElementTriggered(sequenceIndex);
         }
     }
 
-    /// <summary>S键播放特效（仅可见时）</summary>
+    /// <summary>按键触发：通知管理器处理（使用当前音频组）</summary>
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.S) && IsVisible)
         {
-            PlayByKey(); // 播放音频2或音频1（普通优先级）
+            PlayEffect(); // 播放自身动画（与音频组无关）
+
+            if (manager.displayMode == DisplayMode.Sequential)
+            {
+                // 顺序模式：使用自身音频
+                AudioPlayer.Instance.PlayAudio(this, TriggerType.Key);
+            }
+            else
+            {
+                // 同时模式：由管理器决定播放哪个音频组
+                manager.HandleKeyTriggerInAllAtOnce();
+            }
         }
     }
 }
