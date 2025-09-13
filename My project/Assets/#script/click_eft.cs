@@ -6,6 +6,10 @@ public class click_eft : MonoBehaviour
     public Animator effectAnimator; // 点击特效动画器
     private Collider2D clickCollider; // 碰撞组件
 
+    [Header("音频设置")]
+    public AudioClip audiotouch; // 玩家触碰时播放的音频（优先级高）
+    public AudioClip audiokey; // 按键触发时播放的音频（优先级低）
+
     private ClickSequenceManager manager; // 管理器引用
     private int sequenceIndex; // 组索引
 
@@ -45,10 +49,32 @@ public class click_eft : MonoBehaviour
             clickCollider.enabled = false;
     }
 
-    /// <summary>播放特效</summary>
-    public void PlayEffect()
+    /// <summary>播放特效动画</summary>
+    private void PlayEffect()
     {
         effectAnimator?.SetTrigger("click");
+    }
+
+    /// <summary>通过玩家触碰播放特效和音频1（优先级）</summary>
+    public void PlayByTouch()
+    {
+        PlayEffect();
+        if (audiotouch != null)
+        {
+            AudioQueueManager.Instance.EnqueueAudio(audiotouch, this, true);
+        }
+    }
+
+    /// <summary>通过按键播放特效和音频2（普通优先级）</summary>
+    public void PlayByKey()
+    {
+        PlayEffect();
+        // 音频2为null时使用音频1
+        AudioClip targetAudio = audiokey ?? audiotouch;
+        if (targetAudio != null)
+        {
+            AudioQueueManager.Instance.EnqueueAudio(targetAudio, this, false);
+        }
     }
 
     /// <summary>判断是否可见（碰撞体启用即为可见）</summary>
@@ -60,6 +86,9 @@ public class click_eft : MonoBehaviour
         if (manager == null || other.gameObject != manager.player)
             return;
 
+        PlayByTouch(); // 播放音频1（优先级）
+
+        // 执行序列切换逻辑
         if (manager.displayMode == DisplayMode.Sequential)
         {
             manager.NextSequence();
@@ -75,7 +104,7 @@ public class click_eft : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.S) && IsVisible)
         {
-            PlayEffect();
+            PlayByKey(); // 播放音频2或音频1（普通优先级）
         }
     }
 }

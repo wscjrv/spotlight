@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor.Experimental.RestService;
 using UnityEngine;
 
 public enum DisplayMode
@@ -11,11 +10,15 @@ public enum DisplayMode
 public class ClickSequenceManager : MonoBehaviour
 {
     public Animator maskanimation;
+
     [Header("显示设置")]
     public DisplayMode displayMode = DisplayMode.Sequential;
     public List<click_eft> clickList = new List<click_eft>();
     public List<clickse_eft> clickseList = new List<clickse_eft>();
     public GameObject player;
+
+    [Header("完成音频设置")]
+    public AudioClip completionAudio; // 所有交互完成时播放的音频
 
     // 顺序模式变量
     private int currentSequenceIndex = 0;
@@ -37,7 +40,7 @@ public class ClickSequenceManager : MonoBehaviour
         }
     }
 
-    /// <summary>初始化元素（仅基础设置，无校验）</summary>
+    /// <summary>初始化元素</summary>
     private void InitializeAllElements()
     {
         totalCount = clickList.Count;
@@ -71,7 +74,6 @@ public class ClickSequenceManager : MonoBehaviour
         {
             clickList[currentSequenceIndex]?.Show();
             clickseList[currentSequenceIndex]?.Show();
-            clickList[currentSequenceIndex]?.PlayEffect();
         }
     }
 
@@ -109,7 +111,6 @@ public class ClickSequenceManager : MonoBehaviour
         {
             clickList[i]?.Show();
             clickseList[i]?.Show();
-            clickList[i]?.PlayEffect();
         }
     }
 
@@ -119,7 +120,6 @@ public class ClickSequenceManager : MonoBehaviour
 
         clickList[index]?.Hide();
         clickseList[index]?.Hide();
-        clickList[index]?.PlayEffect();
 
         completedCount++;
         if (completedCount >= totalCount)
@@ -134,9 +134,17 @@ public class ClickSequenceManager : MonoBehaviour
         return index >= 0 && index < totalCount;
     }
 
+    /// <summary>所有交互完成处理</summary>
     private void OnAllCompleted()
     {
         Debug.Log("所有元素处理完成");
         maskanimation?.SetTrigger("ifmaskout");
+
+        // 中断所有音频并播放完成音频
+        AudioQueueManager.Instance.StopAllAndClear();
+        if (completionAudio != null)
+        {
+            AudioQueueManager.Instance.EnqueueAudio(completionAudio, null, true);
+        }
     }
 }

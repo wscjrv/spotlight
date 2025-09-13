@@ -1050,8 +1050,9 @@ GameObject:
   m_Component:
   - component: {fileID: 638583888}
   - component: {fileID: 638583887}
+  - component: {fileID: 638583889}
   m_Layer: 0
-  m_Name: 0
+  m_Name: sp eft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1070,7 +1071,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maskanimation: {fileID: 1901343805}
-  displayMode: 1
+  displayMode: 0
   clickList:
   - {fileID: 324864099}
   - {fileID: 1707389609}
@@ -1080,6 +1081,7 @@ MonoBehaviour:
   - {fileID: 1465301987}
   - {fileID: 1753420843}
   player: {fileID: 1162998736}
+  completionAudio: {fileID: 0}
 --- !u!4 &638583888
 Transform:
   m_ObjectHideFlags: 0
@@ -1098,6 +1100,18 @@ Transform:
   - {fileID: 2103661761}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &638583889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638583886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8a22564e3ef2514295361ffaf43b140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &866932286
 GameObject:
   m_ObjectHideFlags: 0
@@ -2184,6 +2198,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Music0
       objectReference: {fileID: 0}
+    - target: {fileID: 8106189462433829128, guid: 4b98e25d015ca8a42a09f84893e158f8, type: 3}
+      propertyPath: audiotouch
+      value: 
+      objectReference: {fileID: 8300000, guid: c82c32cd3eb9ff14ca45c8afc4e4dd2e, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2197,5 +2215,5 @@ SceneRoots:
   - {fileID: 866932288}
   - {fileID: 1162998737}
   - {fileID: 612553903}
-  - {fileID: 515531196}
   - {fileID: 638583888}
+  - {fileID: 515531196}
