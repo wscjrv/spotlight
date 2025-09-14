@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Teach.unity
     guid: fba475413c6728f40bad9149163dae23
   - enabled: 1
@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LV1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GAMESCENES.unity
     guid: e61d07bb8ea5d9e41a438bb88b058a85
   - enabled: 1
@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LV3.unity
     guid: aea24c7604ffffc449220d36d7dceed0
+  - enabled: 1
+    path: Assets/Scenes/END.unity
+    guid: 3c10b4b9af5b9b44f9ff905717e90dbd
   m_configObjects: {}

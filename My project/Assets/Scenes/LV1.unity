@@ -1345,6 +1345,7 @@ MonoBehaviour:
   - {fileID: 947138441}
   player: {fileID: 1162998736}
   maskanimation: {fileID: 1901343805}
+  objectToReveal: {fileID: 0}
   completionAudio: {fileID: 8300000, guid: 8aa80153098b627438caec5b72155a5e, type: 3}
   playInitAudio: 1
   initAudioType: 1
@@ -1489,7 +1490,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -11
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
