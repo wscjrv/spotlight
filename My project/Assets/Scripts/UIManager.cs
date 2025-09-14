@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
     public void OnStartClick()
     {
         // 加载名为"Teach"的场景（名称必须与保存的场景名完全一致）
-        SceneManager.LoadScene("Teach");
+        SceneManager.LoadScene("LV1");
     }
 
     // 退出按钮点击：退出游戏（保持之前的逻辑）

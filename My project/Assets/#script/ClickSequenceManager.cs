@@ -34,6 +34,7 @@ public class ClickSequenceManager : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("开始运行");
         InitializeAllElements();
         StartModeLogic();
 
@@ -215,5 +216,6 @@ public class ClickSequenceManager : MonoBehaviour
     {
         maskanimation?.SetTrigger("ifmaskout");
         AudioPlayer.Instance.PlayCompleteAudio(completionAudio);
+        Debug.Log("结束运行");
     }
 }
