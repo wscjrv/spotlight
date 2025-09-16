@@ -546,6 +546,14 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7341324371865234280, guid: c179659bc851e2a468c35c0c9615038c, type: 3}
+      propertyPath: audiokey
+      value: 
+      objectReference: {fileID: 8300000, guid: 9c7fbba28521e124a904779ee26b451e, type: 3}
+    - target: {fileID: 7341324371865234280, guid: c179659bc851e2a468c35c0c9615038c, type: 3}
+      propertyPath: audiotouch
+      value: 
+      objectReference: {fileID: 8300000, guid: 8aa80153098b627438caec5b72155a5e, type: 3}
     - target: {fileID: 8792234204766155776, guid: c179659bc851e2a468c35c0c9615038c, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -3832,6 +3840,14 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7341324371865234280, guid: c179659bc851e2a468c35c0c9615038c, type: 3}
+      propertyPath: audiokey
+      value: 
+      objectReference: {fileID: 8300000, guid: 7d0e7d8d775af1448b208ef85b5a3ea6, type: 3}
+    - target: {fileID: 7341324371865234280, guid: c179659bc851e2a468c35c0c9615038c, type: 3}
+      propertyPath: audiotouch
+      value: 
+      objectReference: {fileID: 8300000, guid: e89a3cbeb3b1b964c8d20d922bc7f15a, type: 3}
     - target: {fileID: 8792234204766155776, guid: c179659bc851e2a468c35c0c9615038c, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -5014,6 +5030,21 @@ MonoBehaviour:
     m_Bits: 64
   isJumping: 0
   checkline: 1
+--- !u!114 &1797178762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797178758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d94591ced84033841912150454889b8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetSceneName: ui
+  pressWindow: 1
+  stopAudioOnSwitch: 1
 --- !u!1 &1838723257 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 89829432054129067, guid: c179659bc851e2a468c35c0c9615038c, type: 3}
@@ -5136,6 +5167,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7341324371865234280, guid: c179659bc851e2a468c35c0c9615038c, type: 3}
+      propertyPath: audiokey
+      value: 
+      objectReference: {fileID: 8300000, guid: ab6448844e8463b4a987b163f52f6a25, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5648,6 +5683,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7341324371865234280, guid: c179659bc851e2a468c35c0c9615038c, type: 3}
+      propertyPath: audiokey
+      value: 
+      objectReference: {fileID: 8300000, guid: 8ed4989c620fac344aa262d3b20fda86, type: 3}
     - target: {fileID: 8792234204766155776, guid: c179659bc851e2a468c35c0c9615038c, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -6088,6 +6127,9 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4133513401408165119, guid: 9e6a3facc4ef0ff4d9c1ec595016174e, type: 3}
       insertIndex: 1
+      addedObject: {fileID: 1797178762}
+    - targetCorrespondingSourceObject: {fileID: 4133513401408165119, guid: 9e6a3facc4ef0ff4d9c1ec595016174e, type: 3}
+      insertIndex: 2
       addedObject: {fileID: 1797178761}
   m_SourcePrefab: {fileID: 100100000, guid: 9e6a3facc4ef0ff4d9c1ec595016174e, type: 3}
 --- !u!1 &2086578928

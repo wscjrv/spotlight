@@ -283,8 +283,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropDistance: 3
   dropSpeed: 2
-  allowExternalControl: 1
-  stopAtTarget: 1
 --- !u!1 &95411347
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,11 +766,11 @@ PrefabInstance:
     - target: {fileID: 7341324371865234280, guid: c179659bc851e2a468c35c0c9615038c, type: 3}
       propertyPath: audiokey
       value: 
-      objectReference: {fileID: 8300000, guid: f1f94610e4fde4648b96d01163bf0b4c, type: 3}
+      objectReference: {fileID: 8300000, guid: 9c7fbba28521e124a904779ee26b451e, type: 3}
     - target: {fileID: 7341324371865234280, guid: c179659bc851e2a468c35c0c9615038c, type: 3}
       propertyPath: audiotouch
       value: 
-      objectReference: {fileID: 8300000, guid: abece9cf05ce47c4c9575793b60eb514, type: 3}
+      objectReference: {fileID: 8300000, guid: 8aa80153098b627438caec5b72155a5e, type: 3}
     - target: {fileID: 8663647807947643832, guid: c179659bc851e2a468c35c0c9615038c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16.91
@@ -1616,9 +1614,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 445047788}
+  - component: {fileID: 445047789}
   - component: {fileID: 445047791}
   - component: {fileID: 445047790}
-  - component: {fileID: 445047789}
   m_Layer: 0
   m_Name: button2
   m_TagString: Untagged
@@ -1635,7 +1633,7 @@ Transform:
   m_GameObject: {fileID: 445047787}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.007506, y: -4.6803455, z: -1.7627381}
+  m_LocalPosition: {x: 4.22, y: -4.7, z: -1.7627381}
   m_LocalScale: {x: 0.81, y: 0.81, z: 0.81}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1654,7 +1652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inactiveSprite: {fileID: -344989423, guid: 45b20a89c56eef741869d5abbc736223, type: 3}
-  activeSprite: {fileID: -943976681, guid: 45b20a89c56eef741869d5abbc736223, type: 3}
+  activeSprite: {fileID: -537817553, guid: 45b20a89c56eef741869d5abbc736223, type: 3}
   platform: {fileID: 605469917}
 --- !u!61 &445047790
 BoxCollider2D:
@@ -1693,7 +1691,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.625, y: 0.34375}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 0.625, y: 0.34375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -1742,12 +1740,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -344989423, guid: 45b20a89c56eef741869d5abbc736223, type: 3}
+  m_Sprite: {fileID: -767309320, guid: 45b20a89c56eef741869d5abbc736223, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.625, y: 0.34375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2068,8 +2066,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropDistance: -1
   dropSpeed: 2
-  allowExternalControl: 1
-  stopAtTarget: 1
 --- !u!61 &605469918
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2259,23 +2255,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2028781018458129665, guid: 9e6a3facc4ef0ff4d9c1ec595016174e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 54.300003
+      value: 71.25
       objectReference: {fileID: 0}
     - target: {fileID: 2028781018458129665, guid: 9e6a3facc4ef0ff4d9c1ec595016174e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 54.300003
+      value: 71.25
       objectReference: {fileID: 0}
     - target: {fileID: 2028781018458129665, guid: 9e6a3facc4ef0ff4d9c1ec595016174e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 54.300003
+      value: 71.25
       objectReference: {fileID: 0}
     - target: {fileID: 2028781018458129665, guid: 9e6a3facc4ef0ff4d9c1ec595016174e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.018
+      value: 0.006
       objectReference: {fileID: 0}
     - target: {fileID: 2028781018458129665, guid: 9e6a3facc4ef0ff4d9c1ec595016174e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.001
+      value: -0.005
       objectReference: {fileID: 0}
     - target: {fileID: 4133513401408165119, guid: 9e6a3facc4ef0ff4d9c1ec595016174e, type: 3}
       propertyPath: m_Name
@@ -2292,7 +2288,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4133513401408165119, guid: 9e6a3facc4ef0ff4d9c1ec595016174e, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1911905528}
   m_SourcePrefab: {fileID: 100100000, guid: 9e6a3facc4ef0ff4d9c1ec595016174e, type: 3}
 --- !u!1 &644537440
 GameObject:
@@ -2771,11 +2770,11 @@ PrefabInstance:
     - target: {fileID: 7341324371865234280, guid: c179659bc851e2a468c35c0c9615038c, type: 3}
       propertyPath: audiokey
       value: 
-      objectReference: {fileID: 8300000, guid: 965883b2d892b6c4487452e34acf8226, type: 3}
+      objectReference: {fileID: 8300000, guid: 8ed4989c620fac344aa262d3b20fda86, type: 3}
     - target: {fileID: 7341324371865234280, guid: c179659bc851e2a468c35c0c9615038c, type: 3}
       propertyPath: audiotouch
       value: 
-      objectReference: {fileID: 8300000, guid: 41d72b263340f1f46ae7ec7617fc64d1, type: 3}
+      objectReference: {fileID: 8300000, guid: cb92b9d531d855048b24b4c12788fd29, type: 3}
     - target: {fileID: 8663647807947643832, guid: c179659bc851e2a468c35c0c9615038c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.95
@@ -2976,7 +2975,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropDistance: -1.4
   moveSpeed: 4
-  stayTime: 1
+  stayTime: 2
 --- !u!61 &772001476
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3935,8 +3934,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropDistance: 5
   dropSpeed: 2
-  allowExternalControl: 1
-  stopAtTarget: 1
 --- !u!1001 &945157839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4024,11 +4021,11 @@ PrefabInstance:
     - target: {fileID: 7341324371865234280, guid: c179659bc851e2a468c35c0c9615038c, type: 3}
       propertyPath: audiokey
       value: 
-      objectReference: {fileID: 8300000, guid: 367ec66c6584df44da8242c6ff2d812e, type: 3}
+      objectReference: {fileID: 8300000, guid: 7d0e7d8d775af1448b208ef85b5a3ea6, type: 3}
     - target: {fileID: 7341324371865234280, guid: c179659bc851e2a468c35c0c9615038c, type: 3}
       propertyPath: audiotouch
       value: 
-      objectReference: {fileID: 8300000, guid: c1f72b66c41d7304e9b6e6456de49f8d, type: 3}
+      objectReference: {fileID: 8300000, guid: e89a3cbeb3b1b964c8d20d922bc7f15a, type: 3}
     - target: {fileID: 8663647807947643832, guid: c179659bc851e2a468c35c0c9615038c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16.48
@@ -5388,7 +5385,7 @@ MonoBehaviour:
   player: {fileID: 1911905523}
   maskanimation: {fileID: 1614217025}
   objectToReveal: {fileID: 0}
-  completionAudio: {fileID: 8300000, guid: dec2dee19f96a62419d5a1d89803379f, type: 3}
+  completionAudio: {fileID: 8300000, guid: 7ed9413e126de874ba5c8d8346b51add, type: 3}
   playInitAudio: 1
   initAudioType: 1
 --- !u!114 &1286789115
@@ -7126,11 +7123,11 @@ PrefabInstance:
     - target: {fileID: 7341324371865234280, guid: c179659bc851e2a468c35c0c9615038c, type: 3}
       propertyPath: audiokey
       value: 
-      objectReference: {fileID: 8300000, guid: 7571694010ca8a34682e4b6354dd2205, type: 3}
+      objectReference: {fileID: 8300000, guid: ab6448844e8463b4a987b163f52f6a25, type: 3}
     - target: {fileID: 7341324371865234280, guid: c179659bc851e2a468c35c0c9615038c, type: 3}
       propertyPath: audiotouch
       value: 
-      objectReference: {fileID: 8300000, guid: 7571694010ca8a34682e4b6354dd2205, type: 3}
+      objectReference: {fileID: 8300000, guid: ab6448844e8463b4a987b163f52f6a25, type: 3}
     - target: {fileID: 7581573989150698207, guid: c179659bc851e2a468c35c0c9615038c, type: 3}
       propertyPath: m_Size.x
       value: 0.1
@@ -7363,11 +7360,11 @@ PrefabInstance:
     - target: {fileID: 7341324371865234280, guid: c179659bc851e2a468c35c0c9615038c, type: 3}
       propertyPath: audiokey
       value: 
-      objectReference: {fileID: 8300000, guid: 80120ac3aad21bb4597960b305eb30e0, type: 3}
+      objectReference: {fileID: 8300000, guid: 45e73f38fc081e64582672a7b37ba58c, type: 3}
     - target: {fileID: 7341324371865234280, guid: c179659bc851e2a468c35c0c9615038c, type: 3}
       propertyPath: audiotouch
       value: 
-      objectReference: {fileID: 8300000, guid: dec2dee19f96a62419d5a1d89803379f, type: 3}
+      objectReference: {fileID: 8300000, guid: 7ed9413e126de874ba5c8d8346b51add, type: 3}
     - target: {fileID: 8663647807947643832, guid: c179659bc851e2a468c35c0c9615038c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -7400,6 +7397,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4133513401408165119, guid: 9e6a3facc4ef0ff4d9c1ec595016174e, type: 3}
   m_PrefabInstance: {fileID: 607734828}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1911905528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911905523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d94591ced84033841912150454889b8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetSceneName: ui
+  pressWindow: 1
+  stopAudioOnSwitch: 1
 --- !u!1 &1924430998 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2498859684128629054, guid: c179659bc851e2a468c35c0c9615038c, type: 3}

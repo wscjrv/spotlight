@@ -35,6 +35,9 @@ public class PlatformTrigger_Type1 : MonoBehaviour
         if (other.CompareTag("Player") && platform != null && !hasTriggered)
         {
             platform.TriggerDrop();
+            switchRenderer.sprite = activeSprite;
+
+
             hasTriggered = true; // 仅触发一次
         }
     }

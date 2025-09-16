@@ -122,3 +122,4 @@ public class PlatformTrigger_Type2 : MonoBehaviour
         }
     }
 }
+

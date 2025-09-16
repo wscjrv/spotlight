@@ -87,3 +87,4 @@ public class SceneItemManager : MonoBehaviour
         isComplete = false;
     }
 }
+
